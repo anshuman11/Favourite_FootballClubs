@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Dashboard</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(".addFootball").click(function(){
+                    $('.myForm').css("display","block");
+                })
+                $(".deleteButton").click(function(){
+                    console.log(this.id);
+                    fetch("/deleteClub",{
+                        method: 'POST',
+                        headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({number: this.id})
+                    }).then(function(response){
+                        if(response.status == 200)
+                            window.location.reload();
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <% for(var i=0; i< allClubs[0].data.length; i++) { %>
+                    <div class="col-md-3">
+                            <div class="card" style="width: 18rem;">
+                                    <h5 class="card-title"><%= allClubs[0].data[i].club %></h5>
+                                    <img style="height: 200px;" class="card-img-top" alt="Card image cap" src=<%= allClubs[0].data[i].source %>>
+                                    <ul class="list-group list-group-flush">
+                                      <li class="list-group-item" ><%= allClubs[0].data[i].league %></li>
+                                      <li class="list-group-item"><%= allClubs[0].data[i].country %></li>
+                                      <li class="list-group-item"><%= allClubs[0].data[i].city %></li>
+                                      <li class="list-group-item"><button class="btn btn-danger deleteButton" id=<%= allClubs[0].data[i].number%>>Delete</button></li>
+                                    </ul>
+                            </div>
+                    </div>
+                <% }
+                %>
+            </div>
+
+            <br><br>
+            <button class="btn btn-info addFootball">Add new Football Club</button>
+                <div class="container">
+                    <form class="myForm" action="/addClub" method="POST" style="display: none;">
+                        <div class="form-group">
+                            <label for="clubname">Club Name:</label>
+                            <input type="text" placeholder="ClubName" name="club" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cityname">City Name:</label>
+                            <input type="text" placeholder="CityName" name="city" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cityname">League Name:</label>
+                            <input type="text" placeholder="LeagueName" name="league" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="source">Country Name:</label>
+                            <input type="text" placeholder="Country Name" name="country" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="source">Source for Image:</label>
+                            <input type="text" placeholder="Source" name="source" class="form-control" required>
+                        </div>
+                        <input type="submit" value="Save" class="btn btn-info">
+                    </form>
+                </div>
+        </div>
+    </body>
+</html>
