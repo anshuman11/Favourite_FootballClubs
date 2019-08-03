@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //database seup
 var mongoose = require('mongoose');
-var uri = 'mongodb://localhost:27017/admin';
+var uri = 'mongodb+srv://dev_chauhan_10:dschauhan_11m@cluster0-be1gc.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.Promise = global.Promise;
 //connect to mongodb through mongoose
 mongoose.connect(uri, { useNewUrlParser: true });
