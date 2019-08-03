@@ -12,7 +12,7 @@ const saltrounds = 10;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(session({secret: "I love salsa"}));
+app.use(session({secret: "I love salsa",  saveUninitialized: true, resave: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -154,6 +154,10 @@ app.post('/deleteClub',function(req,res){
     res.sendStatus(200);
 })
 
-app.listen(5000,function(err){
-    console.log('Running on http://localhost:5000');
+app.set('port', process.env.PORT || 5000);
+
+app.listen(app.get('port'), function (err) {
+    if (err)
+        console.log(err);
+    console.log('Running on http://localhost:%s', app.get('port'));
 })
