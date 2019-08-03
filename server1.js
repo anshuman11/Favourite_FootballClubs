@@ -12,7 +12,7 @@ const saltrounds = 10;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(session({secret: "I love salsa",  saveUninitialized: true, resave: false}));
+app.use(session({secret: "Ilovesalsa", saveUninitialized: true, resave: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 
