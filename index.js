@@ -3,6 +3,7 @@ var app = express();
 var path = require('path');
 var session = require('express-session');
 var bodyParser = require('body-parser');
+require('dotenv').config();
 const passport = require('passport');
 const passportLocal = require('passport-local').Strategy;
 const cookieParser = require('cookie-parser');
@@ -10,7 +11,7 @@ const bcrypt = require('bcryptjs');
 const saltrounds = 10;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(session({secret: "Ilovesalsa", saveUninitialized: true, resave: false}));
 app.use(passport.initialize());
