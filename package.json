@@ -2,9 +2,9 @@
   "name": "mynewproject",
   "version": "1.0.0",
   "description": "",
-  "main": "server1.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server1.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
