@@ -32,12 +32,12 @@
                 <% for(var i=0; i< allClubs[0].data.length; i++) { %>
                     <div class="col-xs-12 col-sm-6  col-md-4 col-lg-3">
                             <div class="card" style="width:100%">
-                                    <h5 class="card-title"><%= allClubs[0].data[i].club %></h5>
+                                    <h4 class="card-title text-center"><%= allClubs[0].data[i].club.toUpperCase()  %></h4>
                                     <img style="height: 200px;" class="card-img-top" alt="Card image cap" src=<%= allClubs[0].data[i].source %>>
                                     <ul class="list-group list-group-flush">
-                                      <li class="list-group-item" ><%= allClubs[0].data[i].league %></li>
-                                      <li class="list-group-item"><%= allClubs[0].data[i].country %></li>
-                                      <li class="list-group-item"><%= allClubs[0].data[i].city %></li>
+                                      <li class="list-group-item" >League : <%= allClubs[0].data[i].league %></li>
+                                      <li class="list-group-item">Country : <%= allClubs[0].data[i].country %></li>
+                                      <li class="list-group-item">City : <%= allClubs[0].data[i].city %></li>
                                       <li class="list-group-item"><button class="btn btn-danger deleteButton" id=<%= allClubs[0].data[i].number%>>Delete</button></li>
                                     </ul>
                             </div>
