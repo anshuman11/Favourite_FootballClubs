@@ -35,9 +35,9 @@
                                     <h5 class="card-title text-center bg-dark text-light"><%= allClubs[0].data[i].club.toUpperCase()  %></h5>
                                     <img style="height: 200px;" class="card-img-top" alt="Card image cap" src=<%= allClubs[0].data[i].source %>>
                                     <ul class="list-group list-group-flush">
-                                      <li class="list-group-item"> League  : <%= allClubs[0].data[i].league.capitalize() %></li>
-                                      <li class="list-group-item"> Country : <%= allClubs[0].data[i].country.capitalize() %></li>
-                                      <li class="list-group-item"> City    : <%= allClubs[0].data[i].city.capitalize() %></li>
+                                      <li class="list-group-item"> League  : <%= allClubs[0].data[i].league %></li>
+                                      <li class="list-group-item"> Country : <%= allClubs[0].data[i].country %></li>
+                                      <li class="list-group-item"> City    : <%= allClubs[0].data[i].city %></li>
                                       <li class="list-group-item"><button class="btn btn-danger deleteButton" id=<%= allClubs[0].data[i].number%>>Delete</button></li>
                                     </ul>
                             </div>
